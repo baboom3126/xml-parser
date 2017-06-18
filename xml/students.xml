@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="BIG5" standalone="no"?><students>
+
+<student name="Alex">
+  <name>Alex</name>
+  <number>10</number>
+  <chinese>300</chinese>
+  <math>80fd</math>
+</student>
+<student name="Bob">
+  <name>Bob</name>
+  <number>2</number>
+  <chinese>75</chinese>
+  <math>80</math>
+</student>
+<student name="Carl"><name>Carl</name><number>30</number><chinese>80</chinese><math>90</math></student></students>
