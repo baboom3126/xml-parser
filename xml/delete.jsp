@@ -68,7 +68,7 @@
 
       </div>
       <div class="col-md-3 center">
-        <a href="./query.jsp" class="waves-effect waves-light btn">查詢</a>
+        <a href="./ask.jsp" class="waves-effect waves-light btn">查詢</a>
       </div>
     </div>
 
@@ -84,7 +84,9 @@
 <br>
       <form class="" action="go_delete.jsp" method="post">
         <label for="text1">名字</label>
-        <input type="text" name="name" value="" id="text1">
+        <input type="text" name="name" value="" id="text1" disabled>
+          <label for="text1">座號</label>
+          <input type="text" name="number" value="" id="text1">
 
 
             <input type="submit" class="btn" name="" value="送出">

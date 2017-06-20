@@ -19,7 +19,7 @@
     request.setCharacterEncoding("UTF-8");
 
     String new_name=request.getParameter("name");
-
+    String new_number=request.getParameter("number");
     %>
 <%
 request.setCharacterEncoding("UTF-8");
@@ -29,21 +29,21 @@ DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
 DocumentBuilder builder=factory.newDocumentBuilder();
 document=builder.parse("../webapps/xml/students.xml");
 
-
+///////////////////座號刪除///////////////
 Element root = (Element) document.getFirstChild();
 NodeList list = document.getElementsByTagName("student");
 for (int i = 0; i < list.getLength(); i++) {
     Node node = list.item(i);
     if (node instanceof Element) {
         Element e = (Element) node;
-        String num = e.getAttribute("name");
-        if (num.equals(new_name)) {
+        String num=root.getElementsByTagName("number").item(i).getTextContent();
+        if (num.equals(new_number)) {
             root.removeChild(e);
             break;
         }
     }
 }
-
+/////////////////////////////////
 
 
 TransformerFactory tf = TransformerFactory.newInstance();
@@ -110,7 +110,7 @@ former.transform(xmlSource, outputTarget);
 
       </div>
       <div class="col-md-3 center">
-        <a href="./query.jsp" class="waves-effect waves-light btn">查詢</a>
+        <a href="./ask.jsp" class="waves-effect waves-light btn">查詢</a>
       </div>
     </div>
 

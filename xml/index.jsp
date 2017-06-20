@@ -70,7 +70,7 @@ try{
 
       </div>
       <div class="col-md-3 center">
-        <a href="./query.jsp" class="waves-effect waves-light btn">查詢</a>
+        <a href="./ask.jsp" class="waves-effect waves-light btn">查詢</a>
       </div>
     </div>
 

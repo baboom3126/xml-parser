@@ -13,27 +13,20 @@
     <%@ page language="java" import="org.w3c.dom.Document" %>
     <%@ page language="java" import="org.w3c.dom.Element" %>
     <%@ page language="java" import="javax.xml.transform.stream.StreamResult" %>
-<%
-
-Document document;
-DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
-DocumentBuilder builder=factory.newDocumentBuilder();
-document=builder.parse("../webapps/xml/students.xml");
 
 
-Element root=(Element)document.getFirstChild();
+    <%
+    request.setCharacterEncoding("UTF-8");
 
-NodeList list = document.getElementsByTagName("student");
+    String get_name=request.getParameter("name");
 
-String g_number;
-int number = list.getLength()+1;
-for(int i=0;i<list.getLength();i++){
-  g_number=root.getElementsByTagName("number").item(i).getTextContent();
-    if(Integer.valueOf(g_number)!=i){
-      number=Integer.valueOf(g_number)+1 ;
-    }
-}
-%>
+String g_name="";
+String g_number="查無資料";
+String g_chinese="查無資料";
+String g_math="查無資料";
+
+int count=0;
+    %>
 
 
 
@@ -92,29 +85,78 @@ for(int i=0;i<list.getLength();i++){
       </div>
     </div>
 
-<h2>新增</h2><hr>
+    <h2>查詢</h2><hr>
     <div class="card">
       <div class="row">
 
       <div class="col-md-4">
 
       </div>
-      <div class="col-md-4" >
+      <div class="col-md-4 center" >
 
+        <%-- <form class="" action="index.jsp" method="post">
+          <label for="text1">名字</label>
+          <input type="text" name="name" value="<%=get_name%>" id="text1" disabled>
+            <label for="text2">座號</label>
+            <input type="text" name="number" value="<%=g_number%>" id="text2" disabled>
+              <label for="text3">國文</label>
+              <input type="text" name="chinese" value="<%=g_chinese%>" id="text3" disabled>
+                <label for="text4">數學</label>
+                <input type="text" name="math" value="<%=g_math%>" id="text4" disabled>
+              <input type="submit" class="btn" name="" value="返回">
+        </form> --%>
+        <br>
+          <table class="highlight">
+<tr>
+  <td>名字</td><td>座號</td><td>國文</td><td>數學</td>
+</tr>
+          <%
+          request.setCharacterEncoding("UTF-8");
+
+          Document document;
+          DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
+          DocumentBuilder builder=factory.newDocumentBuilder();
+          document=builder.parse("../webapps/xml/students.xml");
+
+
+          Element root = (Element) document.getFirstChild();
+
+          NodeList list = document.getElementsByTagName("student");
+          for(int i=0;i<list.getLength();i++){
+          String a = root.getElementsByTagName("name").item(i).getTextContent();
+
+              g_name=root.getElementsByTagName("name").item(i).getTextContent();
+              g_number=root.getElementsByTagName("number").item(i).getTextContent();
+              g_chinese=root.getElementsByTagName("chinese").item(i).getTextContent();
+              g_math=root.getElementsByTagName("math").item(i).getTextContent();
+              count=1;
+          %>
+
+            <tr>
+              <td><%=g_name%></td><td><%=g_number%></td><td><%=g_chinese%></td><td><%=g_math%></td>
+            </tr>
+          <%
+
+          }
+
+
+
+
+
+
+          TransformerFactory tf = TransformerFactory.newInstance();
+          Transformer former = tf.newTransformer();
+          former.setParameter("version", "1.0");
+          former.setParameter("encoding", "UTF-8");
+          DOMSource xmlSource = new DOMSource(document);
+          StreamResult outputTarget = new StreamResult(new File("../webapps/xml/students.xml"));
+          former.transform(xmlSource, outputTarget);
+
+
+
+          %>
+        </table>
 <br>
-      <form class="" action="go_add.jsp" method="post">
-
-        <label for="text1">名字</label>
-        <input type="text" name="name" value="" id="text1">
-          <label for="text2">座號(自動發派)</label>
-          <input type="text" name="number" value="<%=number%>" id="text2">
-            <label for="text3">國文</label>
-            <input type="text" name="chinese" value="" id="text3">
-              <label for="text4">數學</label>
-              <input type="text" name="math" value="" id="text4">
-            <input type="submit" class="btn" name="" value="送出">
-      </form>
-      <br>
             </div>
             <div class="col-md-4">
 

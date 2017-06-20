@@ -2,38 +2,9 @@
     pageEncoding="UTF-8"%>
     <%@ page language="java" import="javax.xml.parsers.*" %>
     <%@ page language="java" import="org.xml.sax.*" %>
-    <%@ page language="java" import="java.io.*" %>
     <%@ page language="java" import="org.w3c.dom.*" %>
-    <%@ page language="java" import="javax.xml.parsers.DocumentBuilder" %>
-    <%@ page language="java" import="javax.xml.parsers.DocumentBuilderFactory" %>
-    <%@ page language="java" import="javax.xml.transform.Transformer" %>
-    <%@ page language="java" import="javax.xml.transform.TransformerFactory" %>
-    <%@ page language="java" import="javax.xml.transform.dom.DOMSource" %>
-    <%@ page language="java" import="org.w3c.dom.Attr" %>
-    <%@ page language="java" import="org.w3c.dom.Document" %>
-    <%@ page language="java" import="org.w3c.dom.Element" %>
-    <%@ page language="java" import="javax.xml.transform.stream.StreamResult" %>
-<%
+    <%@ page language="java" import="java.io.*" %>
 
-Document document;
-DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
-DocumentBuilder builder=factory.newDocumentBuilder();
-document=builder.parse("../webapps/xml/students.xml");
-
-
-Element root=(Element)document.getFirstChild();
-
-NodeList list = document.getElementsByTagName("student");
-
-String g_number;
-int number = list.getLength()+1;
-for(int i=0;i<list.getLength();i++){
-  g_number=root.getElementsByTagName("number").item(i).getTextContent();
-    if(Integer.valueOf(g_number)!=i){
-      number=Integer.valueOf(g_number)+1 ;
-    }
-}
-%>
 
 
 
@@ -44,6 +15,7 @@ for(int i=0;i<list.getLength();i++){
     <title>首頁</title>
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
@@ -92,29 +64,19 @@ for(int i=0;i<list.getLength();i++){
       </div>
     </div>
 
-<h2>新增</h2><hr>
+<br><br><hr>
     <div class="card">
       <div class="row">
 
       <div class="col-md-4">
 
       </div>
-      <div class="col-md-4" >
+      <div class="col-md-4 center" >
 
 <br>
-      <form class="" action="go_add.jsp" method="post">
-
-        <label for="text1">名字</label>
-        <input type="text" name="name" value="" id="text1">
-          <label for="text2">座號(自動發派)</label>
-          <input type="text" name="number" value="<%=number%>" id="text2">
-            <label for="text3">國文</label>
-            <input type="text" name="chinese" value="" id="text3">
-              <label for="text4">數學</label>
-              <input type="text" name="math" value="" id="text4">
-            <input type="submit" class="btn" name="" value="送出">
-      </form>
-      <br>
+<a href="./query.jsp" class="btn" style="height:100px; padding:33px;">我是學生</a>
+<a href="./go_query1.jsp" class="btn" style="height:100px; padding:33px;">我是老師</a>
+      <br><br>
             </div>
             <div class="col-md-4">
 
@@ -123,6 +85,11 @@ for(int i=0;i<list.getLength();i++){
 
     </div>
   </div>
+<%
+
+
+%>
+
 
 
   </body>

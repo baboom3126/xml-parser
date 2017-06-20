@@ -3,13 +3,14 @@
 <student name="Alex">
   <name>Alex</name>
   <number>1</number>
-  <chinese>300</chinese>
-  <math>80fd</math>
+  <chinese>60</chinese>
+  <math>80</math>
 </student>
 <student name="Bob">
   <name>Bob</name>
   <number>2</number>
-  <chinese>75</chinese>
-  <math>80</math>
+  <chinese>70</chinese>
+  <math>85</math>
 </student>
-<student name="Carl"><name>Carl</name><number>30</number><chinese>80</chinese><math>90</math></student><student name="abd"><name>abd</name><number>df</number><chinese>100fasdf</chinese><math>2312</math></student><student name="Alee"><name>Alee</name><number>4</number><chinese>100</chinese><math>90</math></student></students>
+
+<student name="Carl"><name>Carl</name><number>6</number><chinese>85</chinese><math>90</math></student></students>
