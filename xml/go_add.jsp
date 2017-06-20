@@ -29,13 +29,27 @@ request.setCharacterEncoding("UTF-8");
 Document document;
 DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
 DocumentBuilder builder=factory.newDocumentBuilder();
-document=builder.parse("webapps/xml/students.xml");
+document=builder.parse("../webapps/xml/students.xml");
 
 Element stu=document.createElement("student");
-stu.setAttribute("name", new_name);  
+stu.setAttribute("name", new_name);
 
 Element root=(Element)document.getFirstChild();
 
+String message="";
+int check=0;
+NodeList list = document.getElementsByTagName("student");
+for(int i=0;i<list.getLength();i++){
+String a = root.getElementsByTagName("name").item(i).getTextContent();
+  if(a.equals(new_name))
+  {
+    check=1;
+
+  }}
+
+
+
+if(check!=1){
 root.appendChild(stu);
 Element name=document.createElement("name");
 Element number = document.createElement("number");
@@ -57,9 +71,14 @@ Transformer former = tf.newTransformer();
 former.setParameter("version", "1.0");
 former.setParameter("encoding", "UTF-8");
 DOMSource xmlSource = new DOMSource(document);
-StreamResult outputTarget = new StreamResult(new File("webapps/xml/students.xml"));
+StreamResult outputTarget = new StreamResult(new File("../webapps/xml/students.xml"));
 former.transform(xmlSource, outputTarget);
+message="完成";
+}
 
+else if(check==1){
+  message="失敗<br>名字重複";
+}
 
 
 %>
@@ -130,7 +149,7 @@ former.transform(xmlSource, outputTarget);
       <div class="col-md-4 center" >
 
 <br>
-<h2>完成</h2>
+<h3><font color="red"><%=message%></font></h3>
 <a href="./index.jsp" class="btn">返回主頁</a>
       <br><br>
             </div>

@@ -12,8 +12,10 @@
     DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
     DocumentBuilder builder=factory.newDocumentBuilder();
 
-    document=builder.parse("webapps/xml/students.xml");
-
+    /////////windows location="webapps/xml/students.xml"////////
+try{
+    document=builder.parse("../webapps/xml/students.xml");
+}catch(Exception e){out.print(e);}
     %>
 
 <!DOCTYPE html>

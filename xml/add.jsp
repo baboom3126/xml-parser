@@ -13,7 +13,21 @@
     <%@ page language="java" import="org.w3c.dom.Document" %>
     <%@ page language="java" import="org.w3c.dom.Element" %>
     <%@ page language="java" import="javax.xml.transform.stream.StreamResult" %>
+<%
 
+Document document;
+DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
+DocumentBuilder builder=factory.newDocumentBuilder();
+document=builder.parse("../webapps/xml/students.xml");
+
+
+Element root=(Element)document.getFirstChild();
+
+NodeList list = document.getElementsByTagName("student");
+
+
+int number = list.getLength();
+%>
 
 
 
@@ -83,10 +97,11 @@
 
 <br>
       <form class="" action="go_add.jsp" method="post">
+      
         <label for="text1">名字</label>
         <input type="text" name="name" value="" id="text1">
-          <label for="text2">座號</label>
-          <input type="text" name="number" value="" id="text2">
+          <label for="text2">座號(自動發派)</label>
+          <input type="text" name="number" value="<%=number%>" id="text2">
             <label for="text3">國文</label>
             <input type="text" name="chinese" value="" id="text3">
               <label for="text4">數學</label>

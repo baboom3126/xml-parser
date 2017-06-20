@@ -33,7 +33,7 @@ request.setCharacterEncoding("UTF-8");
 Document document;
 DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
 DocumentBuilder builder=factory.newDocumentBuilder();
-document=builder.parse("webapps/xml/students.xml");
+document=builder.parse("../webapps/xml/students.xml");
 
 
 Element root = (Element) document.getFirstChild();
@@ -75,7 +75,7 @@ Transformer former = tf.newTransformer();
 former.setParameter("version", "1.0");
 former.setParameter("encoding", "UTF-8");
 DOMSource xmlSource = new DOMSource(document);
-StreamResult outputTarget = new StreamResult(new File("webapps/xml/students.xml"));
+StreamResult outputTarget = new StreamResult(new File("../webapps/xml/students.xml"));
 former.transform(xmlSource, outputTarget);
 
 
