@@ -1,14 +1,13 @@
-#學生成績系統
+#Student_Grade_System
 ------------------
 XML + JSP + Tomcat
 
-不同作業系統要依據TOMCAT變數的資料夾
-修改XML檔案路徑
+According to different operating system, it's necessary to change the path of the xml file.
 
-Ubuntu下
+Ubuntu 16.04:
 document=builder.parse("../webapps/xml/students.xml");
 
-Windows下
+Windows 8/10:
 document=builder.parse("/webapps/xml/students.xml");
 
 
